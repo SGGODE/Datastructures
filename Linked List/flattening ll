@@ -1,0 +1,89 @@
+what i learn flattening i got hole idea about merge sort of linked list
+op
+just go for it
+Input:
+5 -> 10 -> 19 -> 28
+|     |     |     | 
+7     20    22   35
+|           |     | 
+8          50    40
+|                 | 
+30               45
+Output:  5-> 7-> 8- > 10 -> 19-> 20->
+22-> 28-> 30-> 35-> 40-> 45-> 50.
+Explanation:
+The resultant linked lists has every 
+node in a single level.
+(Note: | represents the bottom pointer.)
+ 
+
+Example 2:
+
+Input:
+5 -> 10 -> 19 -> 28
+|          |                
+7          22   
+|          |                 
+8          50 
+|                           
+30              
+Output: 5->7->8->10->19->22->28->30->50
+Explanation:
+The resultant linked lists has every
+node in a single level.
+
+(Note: | represents the bottom pointer.)
+
+
+Node* merge(Node* first,Node* second){
+    Node* head=new Node(-1);
+    head->bottom=NULL;
+    Node* temp=head;
+    while(first&&second){
+        if(first->data<second->data){
+            temp->bottom=first;
+            first=first->bottom;
+        }
+        else{
+            temp->bottom=second;
+            second=second->bottom;
+        }
+        temp=temp->bottom;
+    }
+    if(first){
+            temp->bottom=first;
+    }
+    if(second){
+            temp->bottom=second;
+    }
+    return head->bottom;
+}
+Node* middle(Node* head){
+    Node* slow=head;
+    Node* fast=head;
+    while(fast->next!=NULL&&fast->next->next!=NULL){
+        slow=slow->next;
+        fast=fast->next->next;
+    }
+    return slow;
+}
+Node* mergesort(Node* head){
+    if(head==NULL||head->next==NULL)
+      return head;
+    Node* mid=middle(head);
+    Node* head2=mid->next;
+    mid->next=NULL;
+    Node* first=mergesort(head);
+    Node* second=mergesort(head2);
+    return merge(first,second);
+}
+Node *flatten(Node *root)
+{
+   // Your code here
+   return mergesort(root);
+}
+
+ 
+
+Expected Time Complexity: O(N*N*M)
+Expected Auxiliary Space: O(1)
