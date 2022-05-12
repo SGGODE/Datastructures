@@ -47,4 +47,9 @@ class Solution{
     return head->next;
     }
 };
+Expected Time Complexity: O(N*Log(N))
+Expected Auxiliary Space: O(N)
 
+Constraints:
+1 <= T <= 100
+1 <= N <= 105
