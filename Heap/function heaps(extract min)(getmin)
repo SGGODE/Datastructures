@@ -1,0 +1,66 @@
+**GetMin
+as we know that heaps are stored as array
+so basically minheap is kind of sorted ascending array
+we just return arr[0]
+with time complexity of O(1)
+in case of maxheap 
+directly return arr[size-1]
+
+it simply return minimum form minheap
+it doesnot change the binary heap
+
+**Extract min
+ remove min element from heap and return it
+  we just we need to remove the minmum element in heap
+ first we swap the min node with last node 
+ then just reduce size
+ size--
+ then we apply hepify function to balance 
+ the two rules that we study 
+ it should be maintain property of heap i.e min/max
+ it should be complete binary tree
+ 
+ at last return the size of array
+ 
+ class minheap{
+  int arr[];
+  int size;
+  int capacity;
+  minheap(int c){
+   int arr=new int[c];
+   int size=0;
+   int capacity=c;
+   }
+  int left(int i)    //left child of root i
+     return (2*i+1);
+  int right(int i)    //right child of root i
+     return (2*i+2);
+  int parent(int i)   //parent of root i
+     return ((i-1)/2);
+   void hepify(int i){
+    int child1=left(i);
+    int child2=right(i);
+    int small=i;
+    if(child1<size&&arr[child1]<arr[small]) //find
+      small=child1;                           //the
+    if(child2<size&&arr[child2]<arr[small])    //small element
+      small=child2;
+     while(small != i){          //check and call recursive function //the small that we found is equal to root or small what you can say for the while loop
+       swap(arr[i],arr[small]);         //the condition of loop you also can call as base condition recursion and followed by other.
+       hepify(small);
+       }  
+     int getmin(){
+      return arr[0];
+      }
+     int extractmin(){
+       if(size==0)                //base case one
+         return INT_MAX;
+       if(size==1){               //base case no 2
+        size--;
+        return arr[0];
+        }
+        swap(arr[0],arr[size-1]);     //swaping the first element of tree i.e root with last node
+        size--;                       //decreasing the size to cut that min element from the tree
+        heapify(0);                  //just balaning the heap if it is max or min heap
+        return arr[size];  //at the end return extracted min heap
+ };
