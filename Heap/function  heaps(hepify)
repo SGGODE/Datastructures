@@ -1,0 +1,44 @@
+Hepify
+ used as subroutine in many problems;
+ 
+ here you are given a heap any min/max but having a possible violation(consider a perfect min heap(except that one node) 
+ but only one node is at wrong position that is why is not a min heap) there we call the hepify function for
+ that violated node and we just perform some swaping to fix it.
+ genarally the violation is at top
+ 
+ // 1 st step as we call for hepify we just check that 3 element i.e the violated and there two childerens
+   and swap the violated with min element
+   2nd step similarly we call for that swaped node.
+  
+  simple logic compare node with left and right and choose the minimum
+  again and again
+  //recursion is also there for repeated process
+  
+  class minheap{
+  int arr[];
+  int size;
+  int capacity;
+  minheap(int c){
+   int arr=new int[c];
+   int size=0;
+   int capacity=c;
+   }
+  int left(int i)    //left child of root i
+     return (2*i+1);
+  int right(int i)    //right child of root i
+     return (2*i+2);
+  int parent(int i)   //parent of root i
+     return ((i-1)/2);
+   void hepify(int i){
+    int child1=left(i);
+    int child2=right(i);
+    int small=i;
+    if(child1<size&&arr[child1]<arr[small]) //find
+      small=child1;                           //the
+    if(child2<size&&arr[child2]<arr[small])    //small element
+      small=child2;
+     while(small != i){          //check and call recursive function //the small that we found is equal to root or small what you can say for the while loop
+       swap(arr[i],arr[small]);         //the condition of loop you also can call as base condition recursion and followed by other.
+       hepify(small);
+       }    
+ };
