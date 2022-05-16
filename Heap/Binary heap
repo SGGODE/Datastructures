@@ -1,0 +1,44 @@
+Heap is a special Tree-based data structure in which the tree is a complete binary tree. Generally, Heaps can be of two types:
+
+*Max-Heap: In a Max-Heap the key present at the root node must be greatest among the keys 
+  present at all of it’s children. The same property must be recursively true for all sub-trees in that Binary Tree.
+
+*Min-Heap: In a Min-Heap the key present at the root node must be minimum among the keys 
+  present at all of it’s children. The same property must be recursively true for all sub-trees in that Binary Tree.
+  
+*****binary heap is complete binary tree(stored as an array)****
+if we have given a node and we need to find there child
+left
+right
+parent
+we have some formula that are
+if i is a given node than 
+its left child is 
+left(i)=(2*i+1);
+right(i)=(2*i+2);
+parent(i)=|(i-1)/2|;
+
+how to implement heap in c++;
+
+class minheap{
+  int arr[];
+  int size;
+  int capacity;
+  minheap(int c){
+   int arr=new int[c];
+   int size=0;
+   int capacity=c;
+   }
+ };
+   //there are various functions that are there in heap
+   /*
+   as 
+   //vvimp for interview complete class implementation
+   extraction
+   heapify
+   decreasekey
+   buildheap
+   getmin
+   delete
+   insert
+   */
