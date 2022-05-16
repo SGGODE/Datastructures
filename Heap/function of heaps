@@ -1,0 +1,32 @@
+//insertion in heap
+there are two important thinks to remember here
+1.it should maintain the property of heap that is min/max
+2.it should be complete binary tree
+so as we know that it is stored as array
+here we can just increase the size of array and insert the element in last
+but as per both condition we need to make some changes
+we just compare the inserted node with its parent node 
+and swap it
+//here i am going to do this on minheap according to maxheap condition will change
+class minheap{
+  int arr[];
+  int size;
+  int capacity;
+  minheap(int c){
+   int arr=new int[c];
+   int size=0;
+   int capacity=c;
+   }
+   void insert(int x){                                     //x is element that we want to insert
+     if(size=capacity)
+       return;
+     size++;
+     arr[size-1]=x;
+     for(int i=size-1;i!=0;arr[parent(i)]>arr[i]){        //condition according to min heap
+       swap(arr[parent(i)],arr[i]);
+       i=parent(i);
+       }
+ };
+ imp interview question 
+   time complexcity of insert in heap is O(logn)
+   
