@@ -62,5 +62,6 @@ it doesnot change the binary heap
         swap(arr[0],arr[size-1]);     //swaping the first element of tree i.e root with last node
         size--;                       //decreasing the size to cut that min element from the tree
         heapify(0);                  //just balaning the heap if it is max or min heap
-        return arr[size];  //at the end return extracted min heap
+        return arr[size];
+        }                           //at the end return extracted min heap
  };
