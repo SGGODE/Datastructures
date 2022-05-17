@@ -1,0 +1,93 @@
+Decrease key
+we are given a minheap and we need insert a new val(given) at 
+given position
+as we know it stored as array
+we simply add that arr[position]=val
+here we need to carefull about two 
+things or property of heaps
+it should follow property of heap i.e min/max
+it should be a complete binary tree
+we just check that is it satisfying the property 
+of heap
+by comparing with parent and done this till it become 
+root or the parent will become smaller than him(according to property of minheap)
+
+class minheap{
+  int arr[];
+  int size;
+  int capacity;
+  minheap(int c){
+   int arr=new int[c];
+   int size=0;
+   int capacity=c;
+   }
+   void decreasekey(int i,int x){
+    arr[i]=x;
+    while(i!=0&&arr[parent(i)]>arr[i]){
+      swap(arr[parent(i)],arr[i]);
+      i=parent(i);
+     }
+  }
+ };
+ 
+ deleting an element(ith node) form heap;
+ we basically use two thing that we have learn perviously
+ 1.decrease key
+ 2.extractmin
+ we just apply decrease key for that node by replacing it with  -∞ 
+ so will get that node as root node and then we will perform 
+ extractmin and just get the output heap that we want
+ 
+ class minheap{
+  int arr[];
+  int size;
+  int capacity;
+  minheap(int c){
+   int arr=new int[c];
+   int size=0;
+   int capacity=c;
+   }
+  int left(int i)    //left child of root i
+     return (2*i+1);
+  int right(int i)    //right child of root i
+     return (2*i+2);
+  int parent(int i)   //parent of root i
+     return ((i-1)/2);
+ void hepify(int i){
+    int child1=left(i);
+    int child2=right(i);
+    int small=i;
+    if(child1<size&&arr[child1]<arr[small]) //find
+      small=child1;                           //the
+    if(child2<size&&arr[child2]<arr[small])    //small element
+      small=child2;
+     while(small != i){          //check and call recursive function //the small that we found is equal to root or small what you can say for the while loop
+       swap(arr[i],arr[small]);         //the condition of loop you also can call as base condition recursion and followed by other.
+       hepify(small);
+       }  
+     int getmin(){
+      return arr[0];
+      }
+int extractmin(){
+       if(size==0)                //base case one
+         return INT_MAX;
+       if(size==1){               //base case no 2
+        size--;
+        return arr[0];
+        }
+        swap(arr[0],arr[size-1]);     //swaping the first element of tree i.e root with last node
+        size--;                       //decreasing the size to cut that min element from the tree
+        heapify(0);                  //just balaning the heap if it is max or min heap
+        return arr[size];
+        }
+ void decreasekey(int i,int x){
+    arr[i]=x;                                                    (logn)
+    while(i!=0&&arr[parent(i)]>arr[i]){
+      swap(arr[parent(i)],arr[i]);
+      i=parent(i);
+     }
+  }
+void delete(int i){
+ decreasekey(i,-∞);
+ extractmin(); 
+ };
