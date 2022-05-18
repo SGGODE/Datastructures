@@ -1,0 +1,5 @@
+in heap sort
+there are three main steps
+1.build maxheap
+2.remove largest item
+3.place item in sorted partition
