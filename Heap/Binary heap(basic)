@@ -42,3 +42,12 @@ class minheap{
    delete
    insert
    */
+   the sequence that i suggest to follow is
+   1.basic
+   2.insert
+   3.hepify
+   4.extract and get min
+   5.delete and decrease
+   6.buildheap
+   7.heapsort
+    
