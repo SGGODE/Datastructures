@@ -1,0 +1,32 @@
+BUILD HEAP
+Given a random array 
+Given
+[10,5,20,2,4,8]
+output minheap     maxheap
+[2,4,8,5,10,20]    [20,20,8,2,4,5]
+
+buid heap 
+pick(bottom most right most internal node)
+
+ consider
+    [0,1,2,3,4,5,6,7,8,9,10]
+  we need to select that element which is bottom most right most and internal also(we are finding the parent of our last element of heap)
+   in this case we select 
+   that will be 4 for us try to draw heap for better understanding
+   then we will call our heapify function for 4 and then followed by 
+   3 and 2 and 1 and at last 0
+   here selecting that element which will transfer for hepify is most 
+   important
+   and then followed by hepify convert the heap that we have in proper minheap/maxheap according to given writen function
+   
+   formula for lastnode is (size-1)
+   lastnode parent is |((size-1)-1)/2|
+   and then we just call for hepify by decresing nodes
+   
+   void buidheap(){
+    for(int i=((size-2)/2);i>=0;i--){
+      hepify(i);
+      }
+    }
+    Time complexity is O(n);
+    
