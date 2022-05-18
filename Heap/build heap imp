@@ -2,9 +2,10 @@ BUILD HEAP
 Given a random array 
 Given
 [10,5,20,2,4,8]
-output minheap     maxheap
+output minheap     maxheap                                                           
 [2,4,8,5,10,20]    [20,20,8,2,4,5]
-
+                                                                                                                        *****Time complexity is O(n);**********
+                                                                                                                          ************************************
 buid heap 
 pick(bottom most right most internal node)
 
@@ -28,5 +29,5 @@ pick(bottom most right most internal node)
       hepify(i);
       }
     }
-    Time complexity is O(n);
-    
+  *****Time complexity is O(n);**********
+    ************************************
