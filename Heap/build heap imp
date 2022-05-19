@@ -21,13 +21,43 @@ pick(bottom most right most internal node)
    and then followed by hepify convert the heap that we have in proper minheap/maxheap according to given writen function
    
    formula for lastnode is (size-1)
-   lastnode parent is |((size-1)-1)/2|
+   lastnode parent is |(size)/2 - 1|
    and then we just call for hepify by decresing nodes
-   
-   void buidheap(){
-    for(int i=((size-2)/2);i>=0;i--){
-      hepify(i);
+   building a maxheap
+ #include <iostream>
+using namespace std;
+
+void hepify(int arr[],int n,int i){
+   int left=2*i+1;
+   int right=2*i+2;
+   int large=i;
+   if(left<n&&arr[left]>arr[large])
+     large=left;
+   if(right<n&&arr[right]>arr[large])
+     large=right;
+    if(large!=i){
+      swap(arr[large],arr[i]);
+      hepify(arr,n,large);
+   }
+}
+void buidheap(int arr[],int size){
+    for(int i=(size/2)-1;i>=0;i--){
+      hepify(arr,size,i);
       }
     }
+ int main(){
+     int arr[] = { 12, 11, 13, 5, 6, 7 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+ 
+    buidheap(arr, n);
+ 
+    cout << "Sorted array is \n";
+   for (int i = 0; i < n; ++i)
+        cout << arr[i] << " ";
+    cout << "\n";
+     
+ }
   *****Time complexity is O(n);**********
     ************************************
+Sorted array is 
+20 5 10 2 4 8 
