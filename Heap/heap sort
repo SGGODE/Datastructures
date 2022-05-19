@@ -3,3 +3,46 @@ there are three main steps
 1.build maxheap
 2.remove largest item
 3.place item in sorted partition
+
+#include <iostream>
+using namespace std;
+
+void hepify(int arr[],int n,int i){
+   int left=2*i+1;
+   int right=2*i+2;
+   int large=i;
+   if(left<n&&arr[left]>arr[large])
+     large=left;
+   if(right<n&&arr[right]>arr[large])
+     large=right;
+    if(large!=i){
+      swap(arr[large],arr[i]);
+      hepify(arr,n,large);
+   }
+}
+void heapsort(int arr[],int n){
+   for(int i=n/2 - 1;i>=0;i--){
+        hepify(arr,n,i);
+      }
+   for(int i=n-1;i>0;i--){
+      swap(arr[0],arr[i]);
+      hepify(arr,i,0);
+      }
+   }
+ int main(){
+     int arr[] = { 12, 11, 13, 5, 6, 7 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+ 
+    heapsort(arr, n);
+ 
+    cout << "Sorted array is \n";
+   for (int i = 0; i < n; ++i)
+        cout << arr[i] << " ";
+    cout << "\n";
+     
+ }
+   repeat swap first and last element
+   reduce size of heap by 1
+   and hepify
+   
+   
