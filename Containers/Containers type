@@ -1,0 +1,10 @@
+Supports the operations in O(1) TC
+
+Maps & Unordered Maps       //stores key-value pairs
+Sets & Unordered sets     //stores keys only
+Multimaps & Unordered Multimaps
+these Containers are used in
+  Array problems
+  LinkedList -----
+  Sliding Window -----
+  Graphs -------
