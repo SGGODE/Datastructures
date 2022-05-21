@@ -1,0 +1,20 @@
+consider you have a canteen
+you need to store food that you have with there value
+ as we can say it as key-value pairs
+  maggi-15
+  colddrink-19
+ 
+ operations that we on this and with there repective
+  time complexity
+  insert(pizza,199)  O(1) 
+  search(maggi)   15 O(1)
+  erase(colddrink)  O(1)
+  
+  why we don't use array
+  Array<pair<string,int>>
+  or a vector is that time complexity                              both array/vector and hashtable take similar space but tc are much different
+    if you are searching,inserting,deleting 
+    it take O(n) or O(log n)
+    but hashtable take only O(1)
+    that why we use it 
+  not ordered internely 
