@@ -4,3 +4,29 @@ approach
 1.2loops bf O(n2)
 2.sorting + two pointer O(nlogn)
 3.sorting + binary search O(logn)
+4.hashing O(n)
+
+
+4.
+   problem is you can get a similar pair in repating manner (2,4) & (4,2)
+   and if i am at 1 and my k is 2 then i will traversing over set i will
+   get (1,1) i.e 2 a invalid pair
+   
+  to fix this problem we do hashing as we go
+  
+  as 
+  vector<int> pairsum(vector<int>arr,int sum){
+    unordered_set<int> s;
+    vector<int> result;
+    
+    for(int i=0;i<arr.size();i++){
+      int x=sum-arr[i];
+      if(s.find(x)!=s.end()){                                                  we just looking for the element which are there already present
+        result.push_back(x);                                                    if not then we add it and move forward our search and then 
+        result.push_back(arr[i]);                                              return if we get it.
+        return result;                                                          [2,1,8,6,-2,5,3,0]
+       }                                                                         if we are at 6 we just looking for element that we are encounter early 
+       s.insert(arr[i]);                                                         not who are present after the element consider if we are at -2 and we are 
+    }                                                                             we are looking for 2 to 6 element in array not for 5 to 3 just like this help us to avoid reparting elementand 2 case also
+    return {};
+  }
