@@ -1,0 +1,34 @@
+one why is floyd algo
+
+but we want to solve using hashtable
+ stroing a value will not work but storing address(key) can be work (marking true)
+  |<---------------|
+  10-->20-->30-->40
+  A--->B--->C--->D
+  IN MAP
+  A-->T
+  B-->T
+  C-->T
+  D-->T //WHEN WE TRY GO FORM D TO NEXT NODE WE COME BACK TO THE NODE WHICH WE HAVE STORE ALREADY SO WE WILL RETURN TRUE THERE
+             IS A CYCLE
+  OUR MAP IS LIKE
+   unoredered_map<Node*,bool> hashtable
+   
+   so we have given head and we need to find that there is cycle or not
+   here are only checking on the basics of value that repeat then there is a cycle
+   
+   bool containescycle(node* head){
+    unoredered_map<Node*,bool> hashtable
+     node* temp=head;
+    while(temp!=NULL){
+     //check if temp already exists in the hashtable
+    if(hashtable.count(temp)!=0){
+      return true;
+    }
+    //insert in hashtable
+    hashtable[temp]=true;
+   }
+   return false;
+ }
+ reference
+ https://www.geeksforgeeks.org/detect-cycle-in-a-linked-list-using-map/
