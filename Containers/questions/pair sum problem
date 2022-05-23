@@ -19,14 +19,16 @@ approach
     unordered_set<int> s;
     vector<int> result;
     
-    for(int i=0;i<arr.size();i++){
+    for(int i=0;i<arr.size();i++){               //O(n)
       int x=sum-arr[i];
-      if(s.find(x)!=s.end()){                                                  we just looking for the element which are there already present
+      if(s.find(x)!=s.end()){                  //O(1)                           we just looking for the element which are there already present
         result.push_back(x);                                                    if not then we add it and move forward our search and then 
-        result.push_back(arr[i]);                                              return if we get it.
+        result.push_back(arr[i]);                                               return if we get it.
         return result;                                                          [2,1,8,6,-2,5,3,0]
-       }                                                                         if we are at 6 we just looking for element that we are encounter early 
-       s.insert(arr[i]);                                                         not who are present after the element consider if we are at -2 and we are 
-    }                                                                             we are looking for 2 to 6 element in array not for 5 to 3 just like this help us to avoid reparting elementand 2 case also
-    return {};
+       }                                                                        if we are at 6 we just looking for element that we are encounter early 
+       s.insert(arr[i]);                      //O(1)                            not who are present after the element consider if we are at -2 and we are 
+    }                                                                           we are looking for 2 to 6 element in array not for 5 to 3 just like this
+    return {};                                                                  help us to avoid reparting elementand 2 case also
   }
+
+overall time complexity is O(N);
