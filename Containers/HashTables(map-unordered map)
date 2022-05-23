@@ -32,7 +32,7 @@ int main()
   //inserting O(1)
   menu["maggi"]=15;
   menu["dosa"]=20;
-  menu["colddrink"]=30;
+  menu["colddrink"]=30;                                      //menu.find() is also there
   
   //seraching O(1)
   string item;
