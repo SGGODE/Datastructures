@@ -1,0 +1,30 @@
+#include<unordered_set>
+
+//set is a just collection of keys
+
+#include<unordered_set>
+#include<iostream>
+
+using namespace std;
+
+int main(){
+    //set is just a collection of keys
+    //each inserting is O(1)
+    unordered_set<int>s{1,12,13,8,7,4,10};
+    //insert
+    s.insert(56);
+    //delete
+    s.erase(1);
+    int key;
+    cin>>key;
+    
+    //O(1) time as compare to array O(n) or O(log n)
+    if(s.find(key)!=s.end())                      //s.end()is something taht is just after last element not a last element 
+      cout<<key<<" is present"<<endl;
+    else
+      cout<<key<<" is not present"<<endl;
+    for(auto x:s){
+        cout<<x<<endl;
+    }
+
+}
