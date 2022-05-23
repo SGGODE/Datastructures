@@ -1,5 +1,5 @@
 one why is floyd algo
-
+//can we solve using set try it bro
 but we want to solve using hashtable
  stroing a value will not work but storing address(key) can be work (marking true)
   |<---------------|
