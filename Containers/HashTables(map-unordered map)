@@ -1,0 +1,171 @@
+consider you have a canteen
+you need to store food that you have with there value
+ as we can say it as key-value pairs
+  maggi-15
+  colddrink-19
+ 
+ operations that we on this and with there repective
+  time complexity
+  insert(pizza,199)  O(1) 
+  search(maggi)   15 O(1)
+  erase(colddrink)  O(1)
+  99 % case they are in average case O(1)
+  but worst case is O(n)
+  why we don't use array
+  Array<pair<string,int>>
+  or a vector is that time complexity                              both array/vector and hashtable take similar space but tc are much different
+    if you are searching,inserting,deleting 
+    it take O(n) or O(log n)
+    but hashtable take only O(1)
+    that why we use it 
+  not ordered internely 
+******  it implement(internally)hashing with separate chaning *******
+#include <iostream>
+#include<unordered_map>
+
+using namespace std;
+
+int main()
+{
+   
+  unordered_map<string,int> menu;
+  //inserting O(1)
+  menu["maggi"]=15;
+  menu["dosa"]=20;
+  menu["colddrink"]=30;
+  
+  //seraching O(1)
+  string item;
+  cin>>item;
+  if(menu.count(item)==0){
+      cout<<"Not available"<<endl;
+  }
+  else{
+      cout<<item<<" is available and price is "<<menu[item]<<endl;
+  }
+  //updating O(1)
+  menu[item]=(1+4)*menu[item];
+  cout<<item<<" updated price of "<<item<<" is "<<menu[item]<<endl;
+  //deleting O(1)
+  menu.erase(item);
+  cout<<item<<" is no more available thank you"<<endl;
+  //iterate over menu
+  for(pair<string,int> i:menu){
+      cout<<i.first<<" "<<i.second<<endl;
+  }
+    return 0;
+}
+output<<"  "
+dosa
+dosa is available and price is 20
+dosa updated price of dosais 100dosa is no more available thank you
+colddrink 30
+maggi 15
+
+if a questions need to print output as sorted order so we have there map concept in cpp
+like this
+
+*****HERE ALL O(1) QUARRYS BECOME O(logn) BECOME THIS IMPLEMENT INTERNALLY TREE LIKE DS WHICH IS BALENCE TREE WHICH AS HEIGHT LOG N **
+aorted as lexicographically 
+
+#include <iostream>
+#include<map>
+
+using namespace std;
+
+int main()
+{
+   
+  map<string,int> menu;
+  //inserting O(1)
+  menu["maggi"]=15;
+  menu["dosa"]=20;
+  menu["colddrink"]=30;
+  menu["apple"]=100;
+  menu["bannana"]=50;
+  
+  //seraching O(1)
+  string item;
+  cin>>item;
+  if(menu.count(item)==0){
+      cout<<"Not available"<<endl;
+  }
+  else{
+      cout<<item<<" is available and price is "<<menu[item]<<endl;
+  }
+  //updating O(1)
+  menu[item]=(1+4)*menu[item];
+  cout<<item<<" updated price of "<<item<<" is "<<menu[item]<<endl;
+  //deleting O(1)
+  menu.erase(item);
+  cout<<item<<" is no more available thank you"<<endl;
+  //iterate over menu
+  for(pair<string,int> i:menu){
+      cout<<i.first<<" "<<i.second<<endl;
+  }
+    return 0;
+}
+
+you will define a map of key string and value a list/vector to store phone numbers
+  map<string,list<string>> phonenumber;
+   map<string,vector<string>> phonenumber; //vector for dynamic allocation if person have more tan a phone number "+91--------"
+  like this value
+  
+if you need to create a phonebook where all the number of a person are sorted in sorted order
+ as 
+ A---(8767572798,8267147954)
+ B--------------------------
+ C--------------------------
+  like this
+  you will define a map of key string and value a list/vector to store phone numbers
+  map<string,list<string>> phonenumber;
+   map<string,vector<string>> phonenumber; //vector for dynamic allocation if person have more tan a phone number "+91--------"
+  like this value
+  
+  program to for phonebook
+  
+  #include <iostream>
+#include<vector>
+#include<map>
+#include<string>
+
+using namespace std;
+
+int main()
+{
+   
+  map<string,string> phonrbook;
+	phonrbook["sanket"]="8797502098";
+	phonrbook["dada"]="8971131734";
+	phonrbook["gode"]="697502098";
+	phonrbook["yes"]="5971131734";
+	phonrbook["sanket"]="9770164100";
+  
+  //seraching O(1)
+  string item;
+  cin>>item;
+  if(phonrbook.count(item)==0){
+      cout<<"Not available"<<endl;
+  }
+  else{
+      cout<<item<<" is available and price is "<<phonrbook[item]<<endl;
+  }
+  //updating O(1)
+ // phonrbook[item]=(1+4)*phonrbook[item];
+//  cout<<item<<" updated price of "<<item<<" is "<<phonrbook[item]<<endl;
+  //deleting O(1)
+  phonrbook.erase(item);
+  cout<<item<<" is no more available thank you"<<endl;
+  //iterate over menu
+  for(pair<string,string> i: phonrbook){
+     cout<<i.first<<" "<<i.second<<endl;
+  }
+    return 0;
+}
+output<<" "
+yes
+yes is available and price is 5971131734
+yes is no more available thank you
+dada 8971131734
+gode 697502098
+sanket 9770164100
