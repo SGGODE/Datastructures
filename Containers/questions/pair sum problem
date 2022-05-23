@@ -1,0 +1,6 @@
+[2,1,8,6,-2,5,3,0]
+print pairs whose sum is equal to k
+approach 
+1.2loops bf O(n2)
+2.sorting + two pointer O(nlogn)
+3.sorting + binary search O(logn)
