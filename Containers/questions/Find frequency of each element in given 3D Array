@@ -55,3 +55,29 @@ int main()
     findFreq(X, Y, Z, matrix);
     return 0;
 }
+
+output<<" "  
+1 b
+1 f
+1 h
+1 i
+1 l
+1 n
+1 p
+1 w
+1 z
+2 c
+2 k
+2 q
+2 u
+2 v
+3 a
+3 t
+4 d
+4 j
+4 r
+4 y
+5 g
+6 s
+8 e
+according to lexicographically sorted
