@@ -1,0 +1,57 @@
+we have a given 3d array contaning letters a-z;
+we need calculate there number of occurence
+of every letter so we do that using unordered
+map in very easy way
+cool
+algo for sort and other also for there
+kind
+
+#include <iostream>
+#include<vector>
+#include<unordered_map>
+#include<algorithm>
+using namespace std;
+
+void findFreq(int x,int y,int z, vector<vector<vector<char>>> &matrix){
+    unordered_map<char,int> let;
+    for(int i=0;i<x;i++){
+        for(int j=0;j<y;j++){
+            for(int k=0;k<z;k++){
+                let[matrix[i][j][k]]++;
+            }
+        }
+    }
+    vector<pair<int,char>> v;
+    for(pair<char,int> i:let){
+        v.push_back({i.second,i.first});
+    }
+    sort(v.begin(),v.end());
+    for(auto i:v){
+        cout<<i.first<<" "<<i.second<<endl;
+    }
+}
+
+int main()
+{
+    int X = 3, Y = 4, Z = 5;
+ 
+    // Declare 3D array of characters
+    vector<vector<vector<char> > > matrix = {
+        { { 'a', 'b', 'c', 'd', 'e' },
+          { 'f', 'g', 'h', 'i', 'k' },
+          { 'a', 'c', 'd', 'e', 's' },
+          { 'e', 'g', 'e', 's', 'j' } },
+        { { 's', 'j', 'r', 's', 'g' },
+          { 's', 't', 'u', 'e', 'y' },
+          { 't', 'y', 'g', 'j', 'l' },
+          { 'd', 'r', 'g', 't', 'j' } },
+        { { 'e', 'y', 'r', 'v', 'n' },
+          { 'q', 'r', 'y', 'e', 'w' },
+          { 'k', 'e', 'u', 'p', 'q' },
+          { 'z', 'v', 'a', 's', 'd' } }
+    };
+ 
+    // Function call
+    findFreq(X, Y, Z, matrix);
+    return 0;
+}
