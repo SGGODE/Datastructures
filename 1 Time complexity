@@ -1,0 +1,26 @@
+base that you know some important concepts that are there that you need to know
+bs--O(N)---O(N2)
+bis--O(logn)
+      bis
+ T(n)=k+T(n/2)
+ T(n/2)=k+T(n/4)
+ .
+ .
+ .
+ T(1)=k+0
+ 
+ T(n)=sum|-k
+ msO(nlogn)
+       recursive power function
+ int power(int a,int n){
+   if(n==0)                                   //both time and space complexity is O(n)space stack space that it use
+     return 1;                                //time that we call n to 0 calls that loop what we can say it ok 
+    return a*power(a,n-1);
+    }
+fibnacci
+  total time= calls * each call
+            =2pn* k(total work done in that call)each
+            =O(2pn)
+     
+in dp
+ i will update after some time
