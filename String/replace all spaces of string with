@@ -25,3 +25,10 @@ output<<" "
 Write@20your@20code@20in@20this@20editor@20and@20press@20Run@20button@20to@20compile@20and@20execute@20it.
 
 O(n)
+another approach is calculating the number of spaces and then just add the((number of chhar to add - 1)* number of spaces) in string length
+and then point a idx to last position NULL
+and traverse form last and add that char accordinly when space found as like this
+
+int s=0;
+for(int i=0;i<n;i++){
+  its not working i will update
