@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+#include<iostream>
+#include<sstream>
+#include<string>
+#include<map>
+using namespace std;
+
+int main()
+{
+    string s="hello every one good evening and welcome to the show hello";
+    stringstream ss; //storing the hole string into stringstream
+    string word;
+    ss<<s;
+    s.clear();
+    while(!ss.eof()){
+     ss>>word; //extracting the ss word by word
+     s+=word;
+    }
+     
+     for(auto p:s)
+       cout<<p;
+    return 0;
+}
+output<<" "
+
+helloeveryonegoodeveningandwelcometotheshowhello
