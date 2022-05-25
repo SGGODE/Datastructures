@@ -1,0 +1,39 @@
+using stringstream
+map
+and pair
+we can just do it very easyly
+
+#include <iostream>
+#include <sstream>
+#include<string>
+#include<map>
+using namespace std;
+
+int main()
+{
+    string s="hello every one good evening and welcome to the show hello";
+    stringstream ss(s);
+    string word;
+    map<string,int> c;
+    while(ss>>word)
+     c[word]++;
+     
+     for(pair<string,int> p:c)
+       cout<<p.first<<" "<<p.second<<endl;
+    return 0;
+}
+
+output<<" "
+and 1
+evening 1
+every 1
+good 1
+hello 2
+one 1
+show 1
+the 1
+to 1
+
+output is sorted according to lexcio something
+because we use map and we give first chance for words
+welcome 1
