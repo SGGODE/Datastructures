@@ -1,0 +1,37 @@
+tokenizing a string denotes splitting a string with respect to some delimiters
+
+input
+"today is a sunny day"
+
+breaking the string in this delimiter is space
+output
+"today","is","a","good","day"
+
+strtok();
+how to use string tokenizer function
+
+#include<iostream>
+#include<string>
+#include<cstring>
+using namespace std;
+
+int main()
+{
+   char s[100]="Hello evening This is Sanket";
+   char* t=strtok(s," ");
+   while(t!=NULL){
+       cout<<t<<endl;
+       t=strtok(0," ");
+   }
+   
+}
+output<<" "
+Hello
+evening
+This
+is
+Sanket
+
+CREATING tokenixzer function
+
+
