@@ -27,6 +27,6 @@ vector<int> stringSearch(string big,string small){
            result.push_back(i);
     }
     return result;
-    
+    O(n)
 
 }
