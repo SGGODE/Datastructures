@@ -1,0 +1,25 @@
+#include <iostream>
+#include<vector>
+#include<string>
+using namespace std;
+
+int main()
+{
+    string s="Write your code in this editor and press Run button to compile and execute it.";
+    int n=s.size();
+    vector<char> v;
+    for(int i=0;i<n;i++){
+        if(s[i]==' '){
+            v.push_back('@');
+            v.push_back('2');
+            v.push_back('0');
+        }
+        else
+          v.push_back(s[i]);
+    }
+    for(int i=0;i<v.size();i++)
+       cout<<v[i];
+    return 0;
+}
+output<<" "
+Write@20your@20code@20in@20this@20editor@20and@20press@20Run@20button@20to@20compile@20and@20execute@20it.
