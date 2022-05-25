@@ -1,0 +1,29 @@
+Stringstream class is used for insertion and extraction of data to/from the string objects. 
+It acts as a stream for the string object. The stringstream class is similar to cin and 
+cout streams except that it doesn't have an input-output channel.
+
+ A stringstream class in C++ is a Stream Class to Operate on strings. The stringstream class Implements the Input/Output Operations on Memory Bases streams i.e. 
+ string: The stringstream class in C++ allows a string object to be treated as a stream. It is used to operate on strings
+
+basic program to calculate number of words in a string
+
+#include <iostream>
+#include <sstream>
+#include<string>
+
+using namespace std;
+
+int main()
+{
+    string s="Hello World";
+    stringstream ss(s);
+    string word;
+    int c=0;
+    while(ss>>word)
+     c++;
+     
+     cout<<c;
+    return 0;
+}
+//other also such as counting the number of occurence with the count of word in the string or paragraph
+using map,pair and stringstream
