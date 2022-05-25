@@ -1,0 +1,80 @@
+//using stringstream
+
+#include <iostream>
+#include<string>
+#include<sstream>
+using namespace std;
+
+int main()
+{
+    string s="123";
+    stringstream ss(s);
+    int c;
+    ss>>c;
+    cout<<c+1;
+    return 0;
+}
+output<<" "
+
+124
+
+//using sscanf
+#include<iostream>
+#include<stdio.h>
+#include<string>
+using namespace std;
+
+int main()
+{
+   const char* s="123";                                                  //here you just need to know the format spacifier
+    int c;                                                               //%d,%.... other you can convert any
+    sscanf(s,"%d",&c);
+    cout<<c+1;
+    return 0;
+}
+
+output<<" "
+124
+
+using 
+stoi() //stringtointeger    //header iostream,string                 // type of explicit type casting
+atoi() //argument to integer it just convert string valuse to integer not any other appending string with the number.
+atof() and other also.
+
+
+CONVERTIG NUMBER TO A STRING
+to_string
+#include<iostream>
+#include<stdio.h>
+#include<string>
+#include<sstream>
+using namespace std;
+
+int main()
+{
+   int c=23;
+   string p=to_string(c);
+   cout<<p+"sanket"<<endl;
+   
+}
+
+
+stringstream
+#include<iostream>
+#include<stdio.h>
+#include<string>
+#include<sstream>
+using namespace std;
+
+int main()
+{
+   int c=23;
+   stringstream ss;
+   ss<<c;
+   string f=ss.str();
+   cout<<f+"sanket"<<endl;
+   
+}
+
+
+there are many other methods to convert
