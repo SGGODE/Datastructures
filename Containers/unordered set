@@ -1,3 +1,5 @@
+The time complexity of set operations is O(log n) while for unordered_set, it is O(1)
+
 #include<unordered_set>
 
 //set is a just collection of keys
