@@ -41,7 +41,7 @@ key and prefix consist of only lowercase English letters.
 1 <= val <= 1000
 At most 50 calls will be made to insert and sum.
 
-soluction
+solution
 class MapSum {
 public:
     MapSum() {
