@@ -1,0 +1,41 @@
+Given a string S delete the characters which are appearing more than once consecutively.
+
+Example 1:
+
+Input:
+S = aabb
+Output:  ab 
+Explanation: 'a' at 2nd position is
+appearing 2nd time consecutively.
+Similiar explanation for b at
+4th position.
+
+Your Task:
+You dont need to read input or print anything. Complete the function removeConsecutiveCharacter() which accepts a string as input parameter and returns modified string.
+ 
+
+Expected Time Complexity: O(|S|).
+Expected Auxiliary Space: O(|S|).
+ 
+
+Constraints:
+1<=|S|<=105
+All characters are lowercase alphabets.
+
+
+class Solution{
+    public:
+    string removeConsecutiveCharacter(string S)
+    {
+        string p;
+      char c=S[0];
+      p.push_back(S[0]);
+        for(int i=1;i<S.size();i++){
+            if(S[i]!=c){
+            p.push_back(S[i]);
+            c=S[i];
+            }
+        }
+        return p;
+    }
+};
