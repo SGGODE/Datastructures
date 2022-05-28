@@ -1,0 +1,23 @@
+Given text and pattern we need to find pattern in our text
+
+text=aaaaab n size
+pattern=aab m size
+
+we just start with creating hashcode i.e adding ascii value of pattern char
+then we just perfrom rolling of hash function i.e we just traverse over text of
+length pattern and add ascii value and compare with the hashcode if match 
+we compare actual char if not then we just move forward as we are can by adding
+next char of text and removing last char of text and comapring the value;
+
+so this is basic idea of rabin karp algorithm
+O(n-m+1) average case
+
+drawback of algo is sparious hits
+ i.e hashcode is matching many time but after comparsion it is not that pattern 
+ 
+ example 
+  text= ccaccaaedba                     a=1 to e=5
+  pattern=dbc
+   hashcode is 7 so there are many hashcode matching but not pattern every time
+   O(m*n)
+   worst case
