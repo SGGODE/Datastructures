@@ -1,1 +1,68 @@
 
+
+
+
+
+
+
+
+#include <iostream>
+#include<climits>
+using namespace std;
+
+int main()
+{
+    string s;
+    cout<<"enter the string"<<endl;
+    cin>>s;
+    string pattern;
+    cout<<"enter pattern"<<endl;
+    cin>>pattern;
+    //std::array as frag map 
+    int fs[256]={0};
+    int fp[256]={0};
+    for(int i=0;i<pattern.length();i++)
+      fp[pattern[i]]++;
+    
+    int cnt=0;
+    int start=0; //left contraction
+    int min_so_far=INT_MAX;
+    int staet_idx=-1;  //start idx for best window
+    int window_size;
+    for(int i=0;i<s.length();i++){
+        //expand window including current char
+        char ch=s[i];
+        fs[ch]++;
+        //count how many char has been match till now {string and pattern} freq also;
+        if(fs[ch]!=0 and fs[ch]<=fp[ch])
+         cnt++;
+         
+        //another thing
+        //if all char of the pattern are found in the current window then you can start contracting
+        if(cnt==pattern.length()){
+            //start contracting from left to remove unwanted char
+             //not present in pattern current freq is higher than required
+             while(fp[s[start]]==0 or fs[s[start]] > fp[s[start]]){
+                 fs[s[start]]--;
+                 start++;
+             }
+             //note the window size
+              window_size=i-start+1;
+             if(window_size < min_so_far){
+                 min_so_far=window_size;
+                 staet_idx=start;
+             }
+        }
+    }
+    if(staet_idx==-1)
+     cout<<"No window found";
+    else
+      cout<<s.substr(staet_idx,min_so_far);
+    return 0;
+}
+output<<" "
+enter the string
+fizzbuzz
+enter pattern
+fuzz
+fizzbu
