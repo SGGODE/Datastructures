@@ -1,0 +1,97 @@
+Sliding window technique useful for solving problem in array and string
+especially it is considered as technique that can reduce the time complexity from
+O(n2) to O(n)
+
+two types of sw problem
+
+type 1 fixed window length k
+         the length of window is fixed and it asks to find something in the window such as maximum or median
+
+type 2 two pointer criteria
+        the window size is not fixed and usually it asks you to find the subarray that meeets the criteria
+       
+
+housing 
+along the side of road there are sequence of vacant plots of land.each plot has a different area.so the area from a sequence a[1],a[2],....a[n]
+ area is non zero
+you want to buy k acres of land to build a house.you want to find all segments of contiguous plots(i.e a sun=bsection in the sequence)
+of whose sum is exactly k.
+
+example
+plots={1 3 2 1 4 1 3 2 1 1 2}
+k=8;
+
+ouput:
+2 5
+4 6
+5 9
+
+brute force can take O(n3)
+
+prefix sum O(n2)
+ 1 3 2 5
+ ps 1 4 6 11
+ ps(i)=ps(i-1)+a(i)
+ 
+ #include <iostream>
+#include<vector>
+using namespace std;
+
+int main()
+{
+   int n;
+   cin>>n;
+   int arr[n];
+   for(int i=0;i<n;i++)
+     cin>>arr[i];
+   int target;
+   cin>>target;
+  vector<int> v;
+  int i=0,j=0,sum=0;
+  while(j<n){
+      sum+=arr[j];
+      j++;
+      while(sum>target&&i<j){
+          sum-=arr[i];
+          i++;
+      }
+      if(sum==target)
+       cout<<i<<" "<<j-1<<endl;
+  }
+    return 0;
+}
+output<<" "
+10
+1 3 2 1 4 1 3 2 1 1
+8
+2 5
+4 6
+5 9
+
+//smallest window that contains the reqd sum
+if(sum==target)
+       m=min(m,(j-1)-i);
+  }
+  cout<<m<<endl;
+  
+//handle if you have negative integer in the array all selling plot have nonzero area/positive area
+while(j<n){
+      if(arr[j]<0){
+       j++;
+      continue;
+      }
+      sum+=arr[j];
+      j++;
+      while(sum>target&&i<j){
+          if(arr[i]<0){
+              i++;
+              continue;
+          }
+          sum-=arr[i];
+          i++;
+      }
+      if(sum==target)
+       cout<<i<<" "<<j-1<<endl;
+  }
+ 
+ 
