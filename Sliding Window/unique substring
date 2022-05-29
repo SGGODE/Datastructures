@@ -1,0 +1,36 @@
+given a string write a function to find the largest substring eith unique characters(no duplicate)
+
+example
+ sanketgode
+ aabcb
+ 
+ output
+ sanketgod
+ abc
+ 
+ we use unordered_map to track
+
+//tracking my means of unordered map and calculate max_len of non repating longest substring
+
+class Solution {
+public:
+int lengthOfLongestSubstring(string str) {
+   unordered_map<char,int> m;
+    int i=0,j=0,window_len=0,max_window_len=0,start_window=-1;
+    while(j<str.length()){
+        char ch=str[j];
+        if(m.count(ch) and m[ch]>=i){
+            i=m[ch]+1;
+            window_len=j-i;
+        }
+        m[ch]=j;
+        window_len++;
+        j++;
+        if(window_len>max_window_len){
+            max_window_len=window_len;
+            start_window=i;
+        }
+    }
+    return max_window_len;
+  }
+};
