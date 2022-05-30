@@ -1,0 +1,56 @@
+#include <iostream>
+#include<vector>
+#include <climits>
+#include<unordered_map>
+using namespace std;
+int main() {
+    // Write C++ code here
+    string s="aaaaa";
+    unordered_map<char,int> c;
+     string a;
+    for(int i=0;i<s.length();i++){
+        c[s[i]]++;
+    }
+    for(auto x:c){
+        if(x.second >=1)
+          a.push_back(x.first);
+    }
+    int fs[256]={0};
+    int fp[256]={0};
+    for(int i=0;i<a.size();i++)
+            fp[a[i]]++;
+    int cp=0;
+    int start=0;
+    int window_size;
+        int start_idx=-1;
+        int min_so_far=INT_MAX;
+        for(int i=0;i<s.length();i++){
+            char ch=s[i];
+            fs[ch]++;
+            if(fs[ch]!=0 && fs[ch] <= fp[ch])
+                cp++;
+            if(cp==a.length()){
+                while(fp[s[start]]==0 || fs[s[start]] > fp[s[start]]){
+                    fs[s[start]]--;
+                    start++;
+                }
+                window_size=i-start+1;
+                if(window_size < min_so_far){
+                  min_so_far=window_size;
+                    start_idx=start;
+                }
+            }
+        }
+        if(start_idx==-1)
+            cout<<"";
+        
+        cout<<s.substr(start_idx,min_so_far)<<endl;
+   
+    return 0;
+}
+
+output<<" "
+a
+
+input  "aabcbcdbcaaad"
+  output<<" "dbca
