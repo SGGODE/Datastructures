@@ -65,7 +65,7 @@ maggi 15
 if a questions need to print output as sorted order so we have there map concept in cpp
 like this
 
-*****HERE ALL O(1) QUARRYS BECOME O(logn) BECOME THIS IMPLEMENT INTERNALLY TREE LIKE DS WHICH IS BALENCE TREE WHICH AS HEIGHT LOG N **
+*****HERE ALL O(1)  BECOME O(logn) Because THIS IMPLEMENT INTERNALLY TREE LIKE DS WHICH IS BALENCE TREE WHICH AS HEIGHT LOG N **
 aorted as lexicographically 
 
 #include <iostream>
