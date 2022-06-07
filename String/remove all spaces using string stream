@@ -8,7 +8,7 @@ using namespace std;
 int main()
 {
     string s="hello every one good evening and welcome to the show hello";
-    stringstream ss; //storing the hole string into stringstream
+    stringstream ss; //storing the hole string into stringstream //or ss(s)
     string word;
     ss<<s;
     s.clear();
