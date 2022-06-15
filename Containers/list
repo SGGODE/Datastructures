@@ -1,0 +1,38 @@
+#include <iostream>
+#include <iterator>
+#include <list>
+using namespace std;
+
+#include <iostream>
+#include<list>
+#include<iterator>
+using namespace std;
+
+int main()
+{
+    list<int> s;
+    int n;
+    cin>>n;
+    for(int i=0;i<n;i++){
+       s.push_back(i);
+    }
+    list<int>::iterator it;
+    for(it=s.begin();it!=s.end();it++){
+        cout<<*it<<" ";
+    }cout<<endl;
+    cout<<s.front()<<endl;
+    cout<<s.back()<<endl;
+    s.pop_front();
+    s.pop_back();
+    list<int>::iterator i;
+    for(i=s.begin();i!=s.end();i++){
+        cout<<*i<<" ";
+    }cout<<endl;
+    s.reverse();
+    list<int>::iterator sd;
+    for(sd=s.begin();sd!=s.end();sd++){
+        cout<<*sd<<" ";
+    }cout<<endl;
+    s.sort();
+    return 0;
+}
