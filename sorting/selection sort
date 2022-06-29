@@ -1,0 +1,36 @@
+1. Time Complexity
+Case	Time Complexity
+Best Case
+O(n2)
+Average Case
+O(n2)
+Worst Case
+O(n2)
+Best Case Complexity - It occurs when there is no sorting required, i.e. the array is already sorted. The best-case time complexity of selection sort is O(n2).
+Average Case Complexity - It occurs when the array elements are in jumbled order that is not properly ascending and not properly descending. The average case time complexity of selection sort is O(n2).
+Worst Case Complexity - It occurs when the array elements are required to be sorted in reverse order. That means suppose you have to sort the array elements in ascending order, but its elements are in descending order. The worst-case time complexity of selection sort is O(n2).
+2. Space Complexity
+Space Complexity
+O(1)
+Stable
+YES
+The space complexity of selection sort is O(1). It is because, in selection sort, an extra variable is required for swapping.
+
+void selection(int arr[], int n)  
+{  
+    int i, j, small;  
+      
+    for (i = 0; i < n-1; i++)    // One by one move boundary of unsorted subarray  
+    {  
+        small = i; //minimum element in unsorted array  
+      for (j = i+1; j < n; j++)  
+        if (arr[j] < arr[small])  
+            small = j;  
+// Swap the minimum element with the first element  
+    if(small!=i){
+    int temp = arr[small];  
+    arr[small] = arr[i];  
+    arr[i] = temp; 
+    }
+    }  
+}  
