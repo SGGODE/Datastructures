@@ -1,0 +1,98 @@
+Given an array nums of n integers, return an array of all the unique quadruplets [nums[a], nums[b], nums[c], nums[d]] such that:
+
+0 <= a, b, c, d < n
+a, b, c, and d are distinct.
+nums[a] + nums[b] + nums[c] + nums[d] == target
+You may return the answer in any order.
+
+ 
+
+Example 1:
+
+Input: nums = [1,0,-1,0,-2,2], target = 0
+Output: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
+Example 2:
+
+Input: nums = [2,2,2,2,2], target = 8
+Output: [[2,2,2,2]]
+ 
+
+Constraints:
+
+1 <= nums.length <= 200
+-109 <= nums[i] <= 109
+-109 <= target <= 109
+
+class Solution {
+public:
+    vector<vector<int>> fourSum(vector<int>& nums, int target) {
+        int n=nums.size();
+        /*unordered_map<int,pair<int,int>> pai;
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+                pai[nums[i]+nums[j]]={i,j};
+            }
+        }
+        vector<int>z;
+        vector<vector<int>> v;
+        for(int i=0;i<n-3;i++){
+            for(int j=i+1;j<n-2;j++){
+                /*int xum=nums[i]+nums[j];
+                if(pai.find(target-xum)!=pai.end()){
+                    pair<int,int> p=pai[target-xum];
+                    if(p.first!=i&&p.first!=j&&p.second!=i&&p.second!=j){
+                        z={nums[i],nums[j],nums[p.first],nums[p.second]};
+                        v.push_back(z);
+                    }
+                }
+                for(int k=j+1;k<n-1;k++){
+                    for(int l=k+1;l<n;l++){
+                     if(nums[i]+nums[j]+nums[k]+nums[l]==target){
+                         z.push_back(nums[i]);
+                         z.push_back(nums[j]);
+                         z.push_back(nums[k]);
+                         z.push_back(nums[l]);
+                         //sort(z.begin(),z.end());
+                        }
+                     }
+                    }
+                }
+            }
+      /*  vector<int> x{v.begin(),v.end()};
+        //copy(v.begin(), v.end(),x.begin());
+       // x.assign(v.begin(),v.end());
+        vector<vector<int>> c;
+        for(int i=0;i<z.size();i++){
+            int row=i/4;
+            int col=i%4;
+            v[row][col]=z[i];
+        }
+        return v;*/
+        vector<vector<int>>z;
+        set<vector<int>> v;
+        sort(nums.begin(),nums.end());
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+               long new_one=(long)target-(long)nums[i]-nums[j];
+                int a=j+1,b=n-1;
+                while(a<b){
+                    int sum=nums[a]+nums[b];
+                    if(sum>new_one){
+                       b--;
+                    }
+                    else if(sum<new_one)
+                        a++;
+                    else{
+                        v.insert({nums[i],nums[j],nums[a],nums[b]});
+                        a++;
+                        b--;
+                    }
+                }
+            }
+        }
+        for(auto i:v){
+            z.push_back(i);
+        }
+        return z;
+    }
+};
