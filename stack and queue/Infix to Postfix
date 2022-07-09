@@ -1,0 +1,45 @@
+   int imp(char c){
+        if(c=='^')
+         return 3;
+        else if(c=='*'||c=='/')
+         return 2;
+        else if(c=='+'||c=='-')
+         return 1;
+        else
+         return -1;
+    }
+    string infixToPostfix(string s) {
+        // Your code here
+        string a;
+        stack<int> w;
+        for(int i=0;i<s.length();i++){
+            if((s[i]>='a'&&s[i]<='z')||(s[i]>='A'&&s[i]<='Z')||(s[i]>='0'&&s[i]<='9'))
+                a+=s[i];
+            else if(s[i]=='(')
+                w.push('(');
+            else if(s[i]==')'){
+                while(w.top()!='('){
+                    a+=w.top();
+                    w.pop();
+                }
+                w.pop();
+            }
+            else{
+                while(!w.empty()&&imp(s[i])<=imp(w.top())){
+                    if(s[i]=='^'&& w.top()=='^')
+                      break;
+                    else{
+                          a+=w.top();
+                         w.pop();
+                    }
+                }
+                w.push(s[i]);
+            }
+        }
+        while(!w.empty()){
+            a+=w.top();
+            w.pop();
+        }
+        return a;
+    }
+}; 
