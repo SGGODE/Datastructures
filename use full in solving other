@@ -1,0 +1,3 @@
+
+ // remove duplicates
+    ar.erase(unique(ar.begin(), ar.end()), ar.end());
