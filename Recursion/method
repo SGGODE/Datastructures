@@ -1,0 +1,32 @@
+recursive tree------> ip/op method--->(decision)
+**base condition ---->induction---> hypothesis--><---making ip smaller
+choice diagram
+
+recursive problem ----> hypothesis
+solve(n)======1ton
+induction
+
+base condition smallest valid ip/larget invalid 
+invalid                                            valid
+---------------------------|---------------------------------
+                            *base condition 
+                            
+step 1
+  hypothesis design
+  print(7)=1 2 3 4 5 6 7
+  print(n-1)
+  step2 
+  induction
+void print(n){
+  if(n==1)  //base condition
+    return 1;
+   print(n-1); //hypothesis  what you have design your function
+   cout<<n<<" ";//induction step
+   }
+   
+ question on recursion
+ the recursion base good questions need recursion tree to solve it
+ easy can be done on the basices of IBH(induction base hypothesis
+ medium can be done on the basices of recursion tree
+ hard will need the choice diagram
+ 
