@@ -7,3 +7,43 @@ small but if you cannot then you need to be more strong in your skills to get
 the jobs so that how recurdsion work.
 
 choice are given and you want to make decision for it will be answer
+
+recursive tree
+input output method
+examplr is the all possible subset of abc
+
+                     op  ip
+               
+        op1 smaller ip     op1 smaller ip 
+        
+op1'smaller     op1''
+    ip           smallerip              ---------- 
+    
+    
+# of branches is equal to # of choices
+
+                                       op=" "ip="ab"
+                                                                      decision
+                          op=""ip="b"                  op="a"ip="b"
+                                                                                      decision
+               op=""ip=""          op="b"ip=""    op="a"ip=""       op="ab"ip=""
+               ------------        -----------    ----------        ------------
+ we get answer when the input is empty
+ 
+ 
+ recursion ---------> decision __----------> ip small
+                      |||||||
+                      represent
+                      ||||||||
+         ip op      recursive tree
+             number of choice base decision
+             
+  important points
+   ip small(auto)
+   recursion --------> decision__------> choices+decision indicate the recursion
+   recursive tree 
+   
+ 2 step to solve
+ design a recursive tree
+ fuck the code
+  write code
