@@ -61,7 +61,7 @@ public:
            if(v[i]+v[j]<k)
                i++;
            else{
-               c+=n-i;
+               c+=n-i; //sorted so that we add all possible ramining pair to it
                j--;
            }
        }
