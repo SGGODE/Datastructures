@@ -88,3 +88,4 @@ int main()
 	inorder(tree);
 	return 0;
 }
+tree can not have loop that is one node can not be pointed by two nodes simultaneously.
