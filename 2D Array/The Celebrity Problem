@@ -56,9 +56,9 @@ class Solution
         }
           return -1;
     }
-};
+};//0.88
 
-
+//fast 0.55
       int c=0;
         for(int i=1;i<n;i++){
             if(M[c][i]==1)
