@@ -1,0 +1,3 @@
+graph can be divided into components;
+
+so we need to traverse according or by msking and bool are to mark the traverse or not
