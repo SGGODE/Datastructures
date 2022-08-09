@@ -1,0 +1,84 @@
+void print(int n){
+    if(n==0)
+     return;
+   cout<<"sanket"<<endl;
+   print(n-1);
+  }
+int main(){
+ int n;
+ cin>>n;
+ print(n);
+ }
+ 
+ recursion 
+ how it work 
+ as 
+ f(n)  
+ cout
+ f(n-1)
+ cout
+ f(n-2)
+ cout
+ f(n-3)       return 
+ .            |
+ .            |
+ .            return 
+ .
+ .--------| return base condition hit n==0
+ f(0)-----
+ 
+ tc==O(n)
+ sc==stack space==O(n)
+ 
+ #include <iostream>
+
+using namespace std;
+void print(int i,int n){
+    if(i>=n)
+     return;
+    print(i+1,n);
+    cout<<i<<endl;
+}
+int main()
+{
+    int n;
+    cin>>n;
+    print(1,n);
+
+    return 0;
+}
+
+5
+4
+3
+2
+1
+
+
+#include <iostream>
+
+using namespace std;
+void print(int i,int n){
+    if(i<=0)
+     return;
+    print(i-1,n);
+    cout<<i<<endl;
+}
+int main()
+{
+    int n;
+    cin>>n;
+    print(n,n);
+
+    return 0;
+}
+
+6
+1
+2
+3
+4
+5
+6
+
+ 
