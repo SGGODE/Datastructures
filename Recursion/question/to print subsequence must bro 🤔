@@ -1,0 +1,111 @@
+#include <iostream>
+#include<vector>
+using namespace std;
+void sub(int arr[],int i,int n,vector<int>v){
+    if(i>=n){
+        for(auto i:v)
+         cout<<i<<" ";
+         cout<<endl;
+        return;
+    }
+    //take or pick the index to the vector into the subsequence
+    v.push_back(arr[i]);
+    sub(arr,i+1,n,v);
+    v.pop_back();
+    //not take the index to the vector not add the index to the subsequence
+    sub(arr,i+1,n,v);
+}
+int main()
+{
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++)
+      cin>>arr[i];
+    vector<int>v;
+    sub(arr,0,n,v);
+
+    return 0;
+}  arr=[1,2,3]  tc==(2**n)*n   sc=O(n)
+                              we have an empty vector and arr,n,i=0
+                              then just apply a view that is to take and to not take 
+                  ---------   if i take then             if i not take---------------
+          
+                   1                                           -----
+           1,2           1                               2               ----
+       1,2    1,2,3   1,3    1                      2,3     2        3         -----
+   here we get                                      here we get
+   1,2                                              2,3
+   1,2,3                                            2
+   1,3                                              3
+   1                                                {}
+          
+#include <iostream>
+#include<vector>
+using namespace std;
+void sub(int arr[],int i,int n,int sum,int target,vector<int> v){
+    if(i==n){
+     if(sum==target)
+        for(auto i:v)
+         cout<<i<<" ";
+        cout<<"     ";
+        return;
+    }
+    //take or pick the index to the vector into the subsequence
+    v.push_back(arr[i]);
+    sum+=arr[i];
+    sub(arr,i+1,n,sum,target,v);
+    v.pop_back();
+    sum-=arr[i];
+    //not take the index to the vector not add the index to the subsequence
+    sub(arr,i+1,n,sum,target,v);
+}
+int main()
+{
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++)
+      cin>>arr[i];
+    vector<int>v;
+    sub(arr,0,n,0,2,v);
+
+    return 0;
+}
+
+#include <iostream>
+#include<vector>
+using namespace std;
+bool sub(int arr[],int i,int n,int sum,int target,vector<int> v){
+    if(i==n){
+     if(sum==target){
+        for(auto i:v)cout<<i<<" ";
+        cout<<endl;
+        return true;
+     }
+     return false;
+    }
+    //take or pick the index to the vector into the subsequence
+    v.push_back(arr[i]);
+    sum+=arr[i];
+    if(sub(arr,i+1,n,sum,target,v)==true)
+     return true;
+    v.pop_back();
+    sum-=arr[i];
+    //not take the index to the vector not add the index to the subsequence
+    if(sub(arr,i+1,n,sum,target,v)==true)
+     return true;
+ return false;
+}
+int main()
+{
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++)
+      cin>>arr[i];
+    vector<int>v;
+    sub(arr,0,n,0,2,v);
+
+    return 0;
+}
