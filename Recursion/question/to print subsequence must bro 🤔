@@ -109,3 +109,31 @@ int main()
 
     return 0;
 }
+
+
+#include <iostream>
+
+using namespace std;
+int print(int arr[],int i,int n,int s,int sum){
+    if(i==n){
+        if(s==sum)return 1;
+       else 
+        return 0;
+    }
+   s+=arr[i];
+  int l= print(arr,i+1,n,s,sum);
+   s-=arr[i];
+  int r=print(arr,i+1,n,s,sum);
+  return l+r;
+}
+int main()
+{
+   int n;
+   cin>>n;
+   int arr[n];
+   for(int i=0;i<n;i++){
+       cin>>arr[i];
+   }
+   cout<<print(arr,0,n,0,2);
+    return 0;
+}
