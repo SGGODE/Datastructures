@@ -3,3 +3,5 @@
     ar.erase(unique(ar.begin(), ar.end()), ar.end());
     
     *max_element(v.begin(),v.end());
+    
+    subsequence can print with use of algo power set
