@@ -16,3 +16,7 @@ int main(){
  dfs(adj,node,v,arr):
  return v;
  }
+sc ==n nodes===O(n)+O(n) for the vis+O(n) for the recursion stack space 
+
+tc for undirected graph O(n) + 2E
+for directed graph O(n) + E
