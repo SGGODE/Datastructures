@@ -1,0 +1,34 @@
+Given an undirected graph with V vertices and E edges, check whether it contains any cycle or not. 
+
+Example 1:
+
+Input:  
+V = 5, E = 5
+adj = {{1}, {0, 2, 4}, {1, 3}, {2, 4}, {1, 3}} 
+Output: 1
+
+private:
+ bool dfs(int src,vector<int>&v,vector<int> adj[],int parent){
+     v[src]=1;
+     for(auto it:adj[src]){
+         if(it != parent){
+             if(v[it])
+              return 1;
+             if(!v[it] and dfs(it,v,adj,src))
+              return 1;
+         }
+     }
+     return 0;
+ }
+  public:
+    // Function to detect cycle in an undirected graph.
+    bool isCycle(int V, vector<int> adj[]) {
+        vector<int>v(V,0);
+        for(int i=0;i<V;i++){
+            for(auto it:adj[i]){
+                if(!v[it] && dfs(it,v,adj,-1))
+                 return 1;
+            }
+        }
+    return 0;
+    }
