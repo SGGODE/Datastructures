@@ -36,3 +36,22 @@ public:
         return v;
     }
 };
+
+
+given root
+vector<int> v;
+queue<Node*>q;
+q.push(root);
+                                                          //q.push(null);
+while(!q.empty()){
+  Node* temp=q.front();                                   //if(temp==null){
+  q.pop();                                                   cout<<endl;
+  v.push_back(temp->val);                                    q.pop();
+  if(temp->left)                                               if(!q.empty())  q.push(null);}else{ q.pop();
+   q.push(temp->left);                                            cout<<temp->data<<" ";  same;
+  if(temp->right)
+   q.push(temp->right);
+  }
+ return v;
+ }
+ 10 29 30 34 39 45 //other
