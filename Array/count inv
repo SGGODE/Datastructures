@@ -1,0 +1,60 @@
+#include<iostream>
+
+using namespace std;
+
+void merge(int arr[],int l,int m,int r){
+    int n1=m-l+1;
+    int n2=r-m;
+    int first[n1];
+    int second[n2];
+    int k=l;
+    for(int i=0;i<n1;i++){
+        first[i]=arr[k+i];
+    }
+    for(int i=0;i<n2;i++){
+        second[i]=arr[m+1+i];
+    }
+    int s=0,e=0;
+    k=l;
+    while(s<n1 && e<n2){
+        if(first[s]<second[e])
+         arr[k++]=first[s++];
+        else{
+         arr[k]=second[e];
+         inv+=n1-i;
+         k++;
+         e++;
+        }
+    }
+    while(s<n1){
+        arr[k++]=first[s++];
+    }
+    while(e<n2){
+        arr[k++]=second[e++];
+    }
+}
+void mergesort(int arr[],int l,int r){
+    long long inv=0;
+    if(l<r){
+        int m=l+(r-l)/2;
+       inv+=mergesort(arr,l,m);
+       inv+=mergesort(arr,m+1,r);
+       inv+=merge(arr,l,m,r);
+    }
+    return inv;
+}
+void print(int arr[],int n){
+    for(int i=0;i<n;i++)
+     cout<<arr[i]<<" ";
+}
+int main(){
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++)
+     cin>>arr[i];
+ 
+    mergesort(arr,0,n-1);
+    print(arr,n);
+    return 0;
+}
