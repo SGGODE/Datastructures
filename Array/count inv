@@ -1,60 +1,53 @@
-#include<iostream>
-
-using namespace std;
-
-void merge(int arr[],int l,int m,int r){
-    int n1=m-l+1;
-    int n2=r-m;
-    int first[n1];
-    int second[n2];
-    int k=l;
-    for(int i=0;i<n1;i++){
+  public:
+    // arr[]: Input Array
+    // N : Size of the Array arr[]
+    // Function to count inversions in the array.
+     typedef long long ll;
+    long long inv=0;
+    void merge(long long arr[], long long s,long long m,long long e){
+    long long n1=m-s+1;
+    long long n2=e-m;
+    long long first[n1];
+    long long second[n2];
+    long long k=s;
+    for(long long i=0;i<n1;i++){
         first[i]=arr[k+i];
     }
-    for(int i=0;i<n2;i++){
+    for(long long i=0;i<n2;i++){
         second[i]=arr[m+1+i];
     }
-    int s=0,e=0;
-    k=l;
-    while(s<n1 && e<n2){
-        if(first[s]<second[e])
-         arr[k++]=first[s++];
+    ll i=0,j=0;
+    k=s;
+    while(i<n1 && j<n2){
+        if(first[i]<=second[j])
+         arr[k++]=first[i++];
         else{
-         arr[k]=second[e];
-         inv+=n1-i;
-         k++;
-         e++;
+            inv+=(n1-i);
+         arr[k++]=second[j++];
         }
     }
-    while(s<n1){
-        arr[k++]=first[s++];
+    while(i<n1){
+        arr[k++]=first[i++];
     }
-    while(e<n2){
-        arr[k++]=second[e++];
+    while(j<n2){
+        arr[k++]=second[j++];
     }
-}
-void mergesort(int arr[],int l,int r){
-    long long inv=0;
-    if(l<r){
-        int m=l+(r-l)/2;
-       inv+=mergesort(arr,l,m);
-       inv+=mergesort(arr,m+1,r);
-       inv+=merge(arr,l,m,r);
+   // return inv;
     }
-    return inv;
-}
-void print(int arr[],int n){
-    for(int i=0;i<n;i++)
-     cout<<arr[i]<<" ";
-}
-int main(){
-    int n;
-    cin>>n;
-    int arr[n];
-    for(int i=0;i<n;i++)
-     cin>>arr[i];
- 
-    mergesort(arr,0,n-1);
-    print(arr,n);
-    return 0;
-}
+   void mergesort(long long arr[], long long s,long long e){
+      // long long inv=0;
+        if(s<e){
+            long long mid=s+(e-s)/2;
+           mergesort(arr,s,mid);
+           mergesort(arr,mid+1,e);
+           merge(arr,s,mid,e);
+        }
+     // return inv; 
+    }
+    long long int inversionCount(long long arr[], long long N)
+    {
+        // Your Code Here
+       //long long int inv=0;
+        mergesort(arr,0,N-1);
+        return inv;
+    }
