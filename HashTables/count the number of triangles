@@ -1,0 +1,43 @@
+Count Triangles
+Given N Cartesian Points in a 2D Plane,find the number of
+Right Angle triangles such that the base or perpendicular is parallel to
+the X or Y-axis.
+
+
+#include <iostream>
+#include<vector>
+#include<unordered_map>
+using namespace std;
+
+int main()
+{
+    int n;
+    cin>>n;
+    vector<pair<int,int>> v;
+    for(int i=0;i<n;i++){
+        int x,y;
+        cin>>x>>y;
+        v.push_back({x,y});
+    }
+    int count=0;
+    unordered_map<int,int> xmp;
+    unordered_map<int,int> ymp;
+    for(auto it:v){
+        xmp[it.first]++;
+        ymp[it.second]++;
+    }
+    for(auto it:v){
+        int x=it.first;
+        int y=it.second;
+        count+=(xmp[x]-1)*(ymp[y]-1);
+    }
+    cout<<count<<" ";
+    return 0;
+}
+5
+1 2
+2 1
+2 2
+2 3
+3 2
+4 
