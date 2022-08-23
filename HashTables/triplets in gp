@@ -1,0 +1,33 @@
+triplet in gp means 
+  1 4 16  r=4;
+  it simply means if here 4 is a the a/r i.e 1 and a*r i.e 16 this three numbers are in gp 
+  
+#include <iostream>
+#include<unordered_map>
+using namespace std;
+
+int main()
+{
+   int n,r;
+   cin>>n>>r;
+   unordered_map<int,int>left;
+   unordered_map<int,int>right;
+   int arr[n];
+   for(int i=0;i<n;i++){
+    cin>>arr[i];
+    right[arr[i]]++;
+   }
+   int count=0;
+   for(int i=0;i<n;i++){
+       right[arr[i]]--;
+       if(arr[i]%r==0){
+       int lef=arr[i]/r;
+       int rig=r*arr[i];
+        count+=left[lef]*right[rig];
+       }
+       left[arr[i]]++;
+   }
+   cout<<count<<" ";
+    return 0;
+}
+0(n3) to ----> 0(n)
