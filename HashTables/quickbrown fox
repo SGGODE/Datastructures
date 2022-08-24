@@ -1,0 +1,42 @@
+#include <iostream>
+#include<string>
+#include<unordered_set>
+#include<vector>
+#include<climits>
+using namespace std;
+int helper(string s,vector<string>v,int idx,unordered_set<string> &sr){
+    if(s[idx]=='\0')
+     return 0;
+     
+    int ans=INT_MAX;
+    string currstr="";
+    for(int j=idx;s[j]!='\0';j++){
+        currstr+=s[j];
+        if(sr.find(currstr)!=sr.end()){
+            int remaining=helper(s,v,j+1,sr);
+            if(remaining!=-1){
+                ans=min(ans,1+remaining);
+            }
+        }
+    }
+    if(ans==INT_MAX)
+     return -1;
+
+  return ans;
+}
+int main()
+{
+    string s;
+    cin>>s;
+    vector<string> v(5);
+    unordered_set<string> sr;
+    for(int i=0;i<5;i++){
+     cin>>v[i];
+    }
+    for(auto it: v){
+        sr.insert(it);
+    }
+    int count=helper(s,v,0,sr);
+    cout<<count-1<<" ";
+    return 0;
+}
