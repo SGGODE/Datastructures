@@ -1,0 +1,44 @@
+#include <iostream>
+#include<string>
+#include<unordered_set>
+#include<vector>
+#include<climits>
+using namespace std;
+#include<bits/stdc++.h>
+using namespace std;
+
+int longestSubarrayKSum(vector<int> arr,int k){
+    //Complete this function and return the length of longest subarray
+   int ans=INT_MIN;
+   int i=0,j=0,sum=0;
+   int n=arr.size();
+   while(j<n){
+    sum+=arr[j];
+      if(sum<k){
+       j++;
+      }
+     else if(sum==k){
+          ans=max(ans,j-i+1);
+          j++;
+      }
+     else if(sum>k){
+         while(sum>k){
+          sum-=arr[i];
+          i++;
+         }
+         if(sum==k){
+             ans=max(ans,j-i+1);
+         }
+           j++;
+      }
+   }
+      return ans;
+}
+int main()
+{
+    vector<int> arr={10, 5, 2, 7, 1, 9};
+    int k=15;
+    int out=longestSubarrayKSum(arr,k);
+    cout<<out<<" ";
+    return 0;
+}
