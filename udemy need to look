@@ -13,5 +13,10 @@ Start
 Coding Exercise 52: Longest k-sum Subarray
 
 Counting Rectangles | Sets
+
 graph shortest path finder using the two arr
 bfs dist and parent 
+
+Snakes & Ladders Game bfs approach 
+will be like make graph from given snake and ladders
+than bfs traverse count the dist.
