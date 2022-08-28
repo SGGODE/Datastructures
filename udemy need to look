@@ -20,3 +20,5 @@ bfs dist and parent
 Snakes & Ladders Game bfs approach 
 will be like make graph from given snake and ladders
 than bfs traverse count the dist.
+
+cyclic detection in directed graph
