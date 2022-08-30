@@ -1,0 +1,51 @@
+print nth fib mod m
+
+int arr[10000];
+arr[0]=arr[1]=1;
+ for(in ti=2;i<=n;i++){
+  arr[i]=(arr[i-1]+arr[i-2])%m;
+  }
+  cout<<arr[n];
+  
+  (1**k+2k+3k+........nK)%m
+  given 
+  k<=10**18
+  m<=10**9
+  n=10**6
+  
+  (a.b)%m==1
+  b is modular multipitive inverse of a
+  
+  #include<bits/stdc++.h>
+#include<iostream>
+
+using namespace std;
+int solve(int i,int k,int arr[],int cnt,int n){
+    unordered_map<int,int> mp;
+    int m=0;
+    for(int j=1;j<=n&&k!=0;j++){
+        m=max(m,arr[j]);
+        mp[m]++;
+        k--;
+    }
+    return mp[arr[i]];
+}
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int n,q;
+        cin>>n>>q;
+        int arr[n];
+        for(int i=1;i<=n;i++){
+            cin>>arr[i];
+        }
+        for(int j=1;j<=q;j++){
+            int i,k;
+            cin>>i>>k;
+            int cnt=solve(i,k,arr,0,n);
+            cout<<cnt<<endl;
+        }
+    }
+    return 0;
+}
