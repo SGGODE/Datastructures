@@ -43,3 +43,43 @@ int main() {
     cout<<countsum<<endl;
 	return 0;
 }
+
+
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+int funcall=0;
+const int n=3;
+const int m=3;
+int sum(int arr[n][m],int dp[n][m],int i,int j,int n,int m){
+    funcall++;
+    if(i>=n || j>=m)
+     return INF;
+    if(i==n-1 && j==m-1)
+     return arr[n-1][m-1];
+    if(dp[i][j]!=-1)
+     return dp[i][j];
+    return dp[i][j]=arr[i][j]+min(sum(arr,dp,i,j+1,n,m),sum(arr,dp,i+1,j,n,m));
+}
+int main()
+{
+   int arr[n][m];
+   int dp[n][m];
+   for(int i=0;i<n;i++){
+       for(int j=0;j<m;j++){
+           cin>>arr[i][j];
+           dp[i][j]=-1;
+       }
+   }
+   cout<<sum(arr,dp,0,0,n,m)<<endl;
+   cout<<funcall<<endl;
+    return 0;
+}
