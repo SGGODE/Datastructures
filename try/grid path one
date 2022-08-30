@@ -1,0 +1,45 @@
+#include<iostream>
+#include<bits/stdc++.h>
+#include<vector>
+#include<set>
+using namespace std;
+int sum=0;
+int path(vector<vector<int>> grid,vector<vector<int>>&vis,int src,int des,int n,int m,int cal){
+    vis[src][des]=1;
+    sum+=cal;
+    int dx[4]={-1,0,+1,0};
+    int dy[4]={0,1,0,-1};
+   // int cal=INT_MAX;
+   int x=0;
+   int y=0;
+    for(int k=0;k<4;k++){
+        int nr=src+dx[k];
+        int nc=des+dy[k];
+        if(nr>=0&&nc>=0&&nr<n&&nc<m&&!vis[nr][nc]){
+           vis[nr][nc]=1;
+          if(grid[nr][nc]<cal){
+           cal=grid[nr][nc];
+            x=nr;
+            y=nc;
+            path(grid,vis,x,y,n,m,cal);
+          }
+        }
+    }
+    return sum; 
+}
+int main() {
+    int n;
+    cin>>n;
+    vector<vector<int>>grid;
+    for(int i=0;i<n;i++){
+      for(int j=0;j<n;j++) {
+          cin>>grid[i][j];
+      } 
+    }
+    int m=grid[0].size();
+    vector<vector<int>> the_grid=grid;
+    vector<vector<int>> vis(n,vector<int>(m,0));
+    int countsum=path(grid,vis,0,0,m,m,grid[0][0]);
+    cout<<countsum<<endl;
+	return 0;
+}
