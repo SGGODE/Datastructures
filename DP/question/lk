@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+//int mcnt=0;
+
+//public:
+int main() {
+    int n,k;
+    cin>>n>>k;
+    vector<int> dp(n+1,0);
+    dp[0]=1;
+    for(int i=1;i<=n;i++){
+        int sum=0;
+        int c=k;
+        for(int j=i-1;j>=0&&c!=0;j--){
+            sum+=dp[j];
+            c--;
+        }
+        dp[i]=sum;
+    }
+    for(int i=1;i<=n;i++){
+        cout<<dp[i]<<" ";
+    }
+}
