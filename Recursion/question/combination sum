@@ -1,0 +1,16 @@
+
+void combi(vector<vector<int>> v,vector<int>arr,vector<int> get,int idx,int tar,int n){
+   if(idx==n){
+    if(tar==0){
+      v.push_back(get);
+      }
+      return;
+    }
+    if(arr[i]<=tar){
+      get.push_back(arr[i]);
+      combi(v,arr,get,idx,tar-arr[i],n);
+      get.pop_back();
+      }
+    combi(v,arr,get,idx+1,tar,n);
+  }2**t*k;
+  tc any number of time we can take a number if only once then 2**n and k another
