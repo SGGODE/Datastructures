@@ -1,0 +1,55 @@
+all approach  are there from rec memo and tabu and sopti
+
+
+#include <iostream>
+#include<climits>
+using namespace std;
+int fun=0;
+int get(int arr[],int *dp,int idx){
+    fun++;
+    if(idx==0){
+        return arr[idx];
+    }
+    if(idx<0)
+     return 0;
+    if(dp[idx]!=0)
+     return dp[idx];
+    int sum=arr[idx]+get(arr,dp,idx-2);
+    int notsum=get(arr,dp,idx-1);
+    return dp[idx]=max(sum,notsum);
+}
+int main()
+{
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    int dp[n]={0};
+   // cout<<get(arr,dp,n-1)<<endl;
+   // cout<<fun<<" ";
+   /*dp[0]=arr[0];
+   for(int i=1;i<n;i++){
+       int sum=arr[i];
+       if(i>1){
+        sum=arr[i]+dp[i-2];
+       }
+       int take=dp[i-1];
+       dp[i]=max(sum,take);
+   }*/
+  int prev=arr[0];
+  int prev2=0;
+   for(int i=1;i<n;i++){
+       int sum=arr[i];
+       if(i>1){
+        sum=arr[i]+prev2;
+       }
+       int take=prev;
+       int curr=max(sum,take);
+       prev2=prev;
+       prev=curr;
+   }
+   cout<<prev<<" ";
+    return 0;
+}
