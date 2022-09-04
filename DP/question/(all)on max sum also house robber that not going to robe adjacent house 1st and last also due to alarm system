@@ -1,0 +1,39 @@
+there is alarm system that call police if alarm call
+two diff array that not contain firat and last find max rob that can done with disterbing alarm 
+
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+int m=INT_MIN;
+int get(int arr[],int idx){
+    if(idx==0){
+        return arr[idx];
+    }
+    if(idx<0)
+     return 0;
+    int sum=arr[idx]+get(arr,idx-2);
+    int take=get(arr,idx-1);
+  return max(sum,take);  
+}
+int main()
+{
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    int arr1[n-1];
+    for(int i=0;i<n-1;i++){
+        arr1[i]=arr[i];
+    }
+    int arr2[n-1];
+    for(int i=0;i<n-1;i++){
+        arr2[i]=arr[i+1];
+    }
+    int ans1=0,ans2=0;
+    ans1=get(arr1,n-2);
+    ans2=get(arr2,n-2);
+    cout<<max(ans1,ans2)<<endl;
+    return 0;
+}
