@@ -1,0 +1,17 @@
+map<int,int>mp;
+        int sum=0,msize=0;
+        for(int i=0;i<n;i++){
+          sum+=A[i];
+          if(A[i]==0&&msize==0){
+              msize=1;
+          }
+          if(sum==0){
+              msize=i+1;
+          }
+          if(mp.find(sum)!=mp.end()){
+              msize=max(msize,i-mp[sum]);
+          }else{
+              mp[sum]=i;
+          }
+        }
+        return msize;
