@@ -1,0 +1,18 @@
+int SumTree(TreeNode*root) {
+        if(root==NULL)return 0;
+        return SumTree(root->left)+SumTree(root->right)+root->val;
+    }
+    void theTree(TreeNode* root){
+      if(root==NULL)return;
+      int left=SumTree(root->left);
+      int right=SumTree(root->right);
+      root->val=root->val+left+right;
+      if(root->left)theTree(root->left);
+      if(root->right)theTree(root->right);
+    }
+    void inorder(TreeNode* root){
+        if(root==NULL)return;
+        inorder(root->left);
+        cout<<root->val<<" ";
+        inorder(root->right);
+    }
