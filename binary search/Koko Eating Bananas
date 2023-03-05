@@ -1,0 +1,16 @@
+  int s=1;
+        int e=1000000000;
+        while(s<e){
+          long long  int total=0;
+            int mid=(s+e)/2;
+            for(auto it:piles){
+              long long int x=(it+mid-1)/mid;
+                total+=x;
+            }
+            if(total>h){
+                s=mid+1;
+            }else{
+                e=mid;
+            }
+        }
+        return s;
