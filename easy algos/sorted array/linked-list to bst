@@ -1,0 +1,37 @@
+   TreeNode* list(vector<int>&nums){
+        if(nums.size()==0)return NULL;
+        if(nums.size()==1)return new TreeNode(nums[0]);
+        int mid=nums.size()/2;
+        TreeNode* root=new TreeNode(nums[mid]);
+        vector<int>left(nums.begin(),nums.begin()+mid);
+        vector<int>right(nums.begin()+mid+1,nums.end());
+        root->left=list(left);
+        root->right=list(right);
+        return root;
+    }
+public:
+    TreeNode* sortedListToBST(ListNode* head) {
+        if(head==NULL)return NULL;
+        vector<int>v;
+        while(head!=NULL){
+            v.push_back(head->val);
+            head=head->next;
+        }
+        sort(v.begin(),v.end());
+        int n=v.size();
+        if(n==1){
+            TreeNode* temp=new TreeNode(v[0]);
+            return temp;
+        }
+        if(n==2){
+            TreeNode* temp=new TreeNode(v[0]);
+            if(v[1]>v[0]){
+                temp->right=new TreeNode(v[1]);
+                return temp;
+            }else{
+                 temp->left=new TreeNode(v[1]);
+                return temp;
+            }
+        }
+      return list(v);
+    }
