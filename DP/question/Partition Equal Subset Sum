@@ -1,0 +1,26 @@
+class Solution{
+private:
+    int sub(int arr[],int index,int target,vector<vector<int>>&dp){
+        if(target==0)return 1;
+        if(index==0)return arr[0]==target;
+        if(dp[index][target]!=-1)return dp[index][target];
+        int notpick=sub(arr,index-1,target,dp);
+        int pick=0;
+        if(target>=arr[index]){
+            pick=sub(arr,index-1,target-arr[index],dp);
+        }
+        return dp[index][target]=notpick+pick;
+    }
+public:
+    int equalPartition(int N, int arr[])
+    {
+        // code here
+        int sum=0;
+        for(int i=0;i<N;i++)sum+=arr[i];
+        if(sum%2)return 0;
+        vector<vector<int>>dp(N,vector<int>((sum/2)+1,-1));
+        return sub(arr,N-1,sum/2,dp);
+        // if(sum%2)return 0;
+        // return 1;
+    }
+};
