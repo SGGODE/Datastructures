@@ -1,0 +1,108 @@
+#include <bits/stdc++.h> 
+class Node{
+    public:
+    Node* list[26];
+    bool flag=0;
+    int cnt=0;
+    int cnt2=0;
+    bool contain(char ch){
+        return list[ch-'a']!=NULL;
+    }
+    void put(char ch,Node *node){
+        list[ch-'a']=node;
+    }
+    Node* get(char ch){
+        return list[ch-'a'];
+    }
+    void setend(){
+        flag=1;
+    }
+    bool isend(){
+        return flag;
+    }
+    void occerenceString(){
+        ++cnt;
+    }
+    void occerencePrefix(){
+        ++cnt2;
+    }
+    void doccerenceString(){
+        --cnt;
+    }
+    void doccerencePrefix(){
+        --cnt2;
+    }
+    void erase(){
+        flag=0;
+    }
+    int numberofoccerenceString(){
+        return cnt;
+    }
+    int numberofoccerencePrefix(){
+        return cnt2;
+    }
+};
+class Trie{
+  private:
+     Node* root;
+    public:
+
+    Trie(){
+        // Write your code here.
+        root = new Node();
+    }
+
+    void insert(string &word){
+        // Write your code here.
+        Node* node=root;
+        for(int i=0;i<word.size();i++){
+            if(!node->contain(word[i])){
+                node->put(word[i],new Node());
+               // node->occerence();
+            }
+            node = node->get(word[i]);
+            node->occerencePrefix();
+        }
+        //node->setend();
+        node->occerenceString();
+    }
+
+    int countWordsEqualTo(string &word){
+        // Write your code here.
+        Node* node=root;
+        for(int i=0;i<word.size();i++){
+            if(!node->contain(word[i])){
+                return 0;
+            }
+            node = node->get(word[i]);
+        }
+        return node->numberofoccerenceString();
+    }
+
+    int countWordsStartingWith(string &word){
+        // Write your code here.
+         Node* node=root;
+        for(int i=0;i<word.size();i++){
+            if(!node->contain(word[i])){
+                return 0;
+            }
+            node = node->get(word[i]);
+        }
+        return node->numberofoccerencePrefix();
+    }
+
+    void erase(string &word){
+        // Write your code here.
+       Node* node=root;
+        for(int i=0;i<word.size();i++){
+            // if(!node->contain(word[i])){
+            //     node->put(word[i],new Node());
+            //     node->occerence();
+            // }
+            node = node->get(word[i]);
+            node->doccerencePrefix();
+        }
+        //node->setend();
+        node->doccerenceString();
+    }
+};
