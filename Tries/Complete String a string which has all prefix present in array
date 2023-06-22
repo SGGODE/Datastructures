@@ -1,0 +1,67 @@
+#include <bits/stdc++.h> 
+class Node{
+    public:
+    Node* links[26];
+    int newcalls=0;
+    bool flag=0;
+    bool contain(char ch){
+        return links[ch-'a']!=NULL;
+    }
+    void put(char ch,Node* node){
+        links[ch-'a']=node;
+        ++newcalls;
+    }
+    int newNodes(){
+        return newcalls;
+    }
+    Node* get(char ch){
+        return links[ch-'a'];
+    }
+    void setend(){
+        flag=1;
+    }
+    bool getend(){
+        return flag;
+    }
+};
+
+string completeString(int N, vector<string> &arr){
+    // Write your code here.
+     Node* root=new Node();
+        for(int i=0;i<N;i++){
+            Node* node=root;
+            for(int j=0;j<arr[i].size();j++){
+                if(!node->contain(arr[i][j])){
+                    node->put(arr[i][j],new Node());
+                }
+                node=node->get(arr[i][j]);
+            }
+            node->setend();
+        }
+    //    //sort(arr)
+    int maxlen=INT_MIN;string res;
+    for(int i=0;i<N;i++){
+        string s=arr[i];
+        bool flag=1;Node* node=root;
+        for(int j=0;j<s.size();j++){
+           node=node->get(s[j]);
+            if(!node->getend()){
+               flag=0;break;
+           }
+        }
+        //if(flag==0)break;
+        if(flag){
+            int m=s.size();
+            if(maxlen==m){
+                string x=min(res,s);
+               res=x;
+               }
+            if(m>maxlen){
+                maxlen=m;
+                res.clear();
+                res=s;
+            }
+        } 
+    }
+    return res.empty()?"None":res;
+}
