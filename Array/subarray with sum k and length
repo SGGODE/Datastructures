@@ -1,0 +1,56 @@
+#include<bits/stdc++.h>
+#include<iostream>
+
+using namespace std;
+///normal how many subarray with sum k out there will explain.
+int main(){
+   int arr[5]={};
+   int k;cin>>k;
+   map<int,int>mp;
+   int sum=0;
+   mp[0]++;
+   int res=0;
+   for(auto&it:arr){
+    sum+=it;
+    if(mp.find(sum-k)!=mp.end())res+=mp[sum-k];
+    mp[sum]++;
+   }
+   cout<<res<<endl;
+return 0;
+}
+// for subarray with sum k and longest length for all arr[i]>0
+int main(){
+   int arr[5]={};
+   int k;cin>>k;
+   map<int,int>mp;
+   int sum=0;
+   mp[0]++;
+   int res=0;
+   for(auto&it:arr){
+    sum+=it;
+    if(sum==k)res=i+1;
+    if(mp.find(sum-k)!=mp.end())res=max(res,(i-mp[sum-k])+1);
+    mp[sum]=i;
+   }
+   cout<<res<<endl;
+//for negative and zero all not update if prev
+   vector<int>res(n,0);
+        int sum=0;
+        // for(int i=0;i<n;i++){
+        //     sum+=A[i];
+        //     res[i]=sum;
+        // }
+        unordered_map<int,int>mp;
+        int cnt=INT_MIN;
+        //mp[sum]++;
+        for(int i=0;i<n;i++){
+           sum+=A[i];
+           if(sum==k)cnt=i+1;
+           if(mp.count(sum-k)){
+               cnt=max(cnt,(i-mp[sum-k]));
+           }
+           if(mp.find(sum)==mp.end())mp[sum]=i;
+        }
+        return cnt==INT_MIN?0:cnt;
+return 0;
+}
