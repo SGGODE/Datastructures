@@ -1,3 +1,0 @@
-int rem = nums[i]%k
-ans+=mp[(k-rem)%k]
-mp[rem]++;
