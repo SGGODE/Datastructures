@@ -1,0 +1,26 @@
+int minimumOperations(int n, int start, int end, vector<int> &a)
+{
+    // Write your code here
+    if(start==end)return 0;
+    queue<pair<int,int>>pq;
+    pq.push({start,0});
+    vector<int>res(1001,1e9);
+    res[start]=0;
+    sort(a.begin(),a.end());
+   // int res = INT_MAX;
+    int mod=1e3;
+    while(!pq.empty()){
+       int node = pq.front().first;
+       int step = pq.front().second;
+       pq.pop();
+       for(int i=0;i<n;i++){
+           int num = (node*a[i])%mod;
+           if(res[num]>step+1){
+               res[num]=step+1;
+               if(num==end)return step+1;
+               pq.push({num,step+1});
+           }
+       }
+    }
+    return -1;
+}
