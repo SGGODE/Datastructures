@@ -1,0 +1,66 @@
+#include<bits/stdc++.h>
+
+class DisjointSet{
+  vector<int>rank,size,parent;
+  public:
+    DisjointSet(int n){
+		rank.resize(n+1,0);
+		parent.resize(n+1);
+		size.resize(n+1);
+		for(int i=0;i<=n;i++){
+			size[i]=1;
+			parent[i]=i;
+		}
+	}
+	int findpar(int n){
+		if(n==parent[n])return n;
+		return parent[n]=findpar(parent[n]);
+	}
+	void unionbyrank(int u,int v){
+		int par_u = findpar(u);
+		int par_v = findpar(v);
+		if(par_u==par_v)return;
+        if(rank[par_u]<rank[par_v]){
+			parent[par_u]=par_v;
+		}else if(rank[par_u]>rank[par_v]){
+			parent[par_v]=par_u;
+		}else{
+			rank[par_u]++;
+			parent[par_u]=par_v;
+		}
+	}
+	void unionbysize(int u,int v){
+		int par_u = findpar(u);
+		int par_v = findpar(v);
+		if(par_u==par_v)return;
+        if(size[par_u]<size[par_v]){
+			parent[par_u]=par_v;
+			size[par_v]+=size[par_u];
+		}else{
+			parent[par_u]=par_v;
+			size[par_u]+=size[par_v];
+		}
+	}
+};
+
+int kruskalMST(int n, vector<vector<int>> &edges)
+{
+	// Write your code here.
+    int sum=0;
+	DisjointSet ds(n+1);
+	priority_queue<pair<int,pair<int,int>>,vector<pair<int,pair<int,int>>>,greater<pair<int,pair<int,int>>>>pq;
+	for(auto&it:edges){
+		pq.push({it[2],{it[0],it[1]}});
+	}
+	while(!pq.empty()){
+      int node1=pq.top().second.first;
+	  int node2=pq.top().second.second;
+	  int wt=pq.top().first;
+	  pq.pop();
+	  if(ds.findpar(node1)!=ds.findpar(node2)){
+		  ds.unionbysize(node1,node2);
+		  sum+=wt;
+	  }
+	}
+	return sum;
+}
