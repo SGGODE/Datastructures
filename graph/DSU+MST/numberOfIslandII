@@ -1,0 +1,62 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class DisjointSet{
+    vector<int>rank,parent;
+    public:
+    DisjointSet(int n){
+        rank.resize(n+1,0);
+        parent.resize(n+1);
+        for(int i=0;i<=n;i++){
+            parent[i]=i;
+        }
+    }
+    int findpar(int n){
+        if(n==parent[n])return n;
+        return parent[n]=findpar(parent[n]);
+    }
+    void unionbyrank(int u,int v){
+        int par_u=findpar(u);
+        int par_v=findpar(v);
+        if(par_u==par_v)return;
+        if(rank[par_u]<rank[par_v]){
+            parent[par_u]=par_v;
+        }else if(rank[par_u]>rank[par_v]){
+            parent[par_v]=par_u;
+        }else{
+            parent[par_u]=par_v;
+            rank[par_v]++;
+        }
+    }
+};
+
+vector<int> numberOfIslandII(int n, int m, vector<vector<int>>& queries, int q)
+{
+    // Write your code here.
+    DisjointSet ds(n*m);
+    vector<vector<bool>>vis(n,vector<bool>(m,0));
+    int cnt=0;
+    int dx[4]={0,0,1,-1};
+    int dy[4]={-1,1,0,0};
+    vector<int>res;
+    for(int i=0;i<q;i++){
+        if(!vis[queries[i][0]][queries[i][1]]){
+            ++cnt;
+            int row=queries[i][0];
+            int col=queries[i][1];
+            vis[row][col]=1;
+            for(int i=0;i<4;i++){
+                if((row+dx[i])>=0&&(row+dx[i])<n&&(col+dy[i])>=0&&(col+dy[i])<m&&vis[row+dx[i]][col+dy[i]]){
+                    int node=((row+dx[i])*m)+(col+dy[i]);
+                    int nodex=(row*m)+col;
+                    if(ds.findpar(node)!=ds.findpar(nodex)){
+                        ds.unionbyrank(node,nodex);
+                        --cnt;
+                    }
+                }
+            }
+        }
+        res.push_back(cnt);
+    }
+    return res;
+}
