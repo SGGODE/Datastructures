@@ -1,0 +1,25 @@
+https://leetcode.com/problems/remove-duplicate-letters/
+https://leetcode.com/problems/smallest-subsequence-of-distinct-characters/
+        
+        stack<char>ch;
+        vector<int>last(26,0);
+        for(int i=0;i<s.size();i++){
+            last[int(s[i])-97]=i;
+        }
+        vector<bool>vis(26,0);
+        string x;
+        for(int i=0;i<s.size();i++){
+             if(vis[s[i]-'a'])continue;
+              while(!ch.empty()&&last[int(ch.top())-97]>i&&s[i]<ch.top()){
+                    vis[int(ch.top())-97]=0;
+                    ch.pop();
+               }
+            ch.push(s[i]);
+            vis[s[i]-'a']=1;
+        }
+        while(!ch.empty()){
+            x.push_back(ch.top());
+            ch.pop();
+        }
+        reverse(x.begin(),x.end());
+        return x;
