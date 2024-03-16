@@ -1,0 +1,54 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <map>
+#include <sstream>
+#include <queue>
+
+
+using namespace std;
+
+vector<vector<string>> wordCountEngine( const string& document ) 
+{
+  // your code goes here
+  string x = document;
+  string s;
+   for (char c : x) {
+        if (!ispunct(c)) { // If c is not a punctuation character
+            s += c;
+        }
+    }
+    //string s = document; 
+    for(auto & it :s) { 
+        it = tolower(it); 
+    } 
+   
+   stringstream ss(s);
+   string word;
+   map<string,int>mp;
+   map<string,int>mx;
+   int cnt = 100000;
+   vector<string>v;
+   while(ss>>word){
+     mp[word]++;
+     if(!mx.count(word)){
+       mx[word]=cnt;
+       --cnt;
+     }
+   }
+   priority_queue<pair<int,pair<int,string>>>pq;
+  for(auto&it:mp){
+    pq.push({it.second,{mx[it.first],it.first}});
+  }
+  vector<vector<string>>result;
+  while(!pq.empty()){
+     result.push_back({pq.top().second.second,to_string(pq.top().first)});
+     pq.pop();
+  }
+  return result;
+}
+
+int main() {
+  
+  return 0;
+}
