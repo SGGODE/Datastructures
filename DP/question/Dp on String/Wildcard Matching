@@ -1,0 +1,30 @@
+class Solution {
+private:
+    int dp[2001][2001];
+    string x;
+    bool sub(string s, string p,int i,int j){
+        if(i<0){
+            if(j<0)return 1;
+            return x[j]=='*'?1:0;
+        }
+        if(j<0)return 0;
+        if(dp[i][j]!=-1)return dp[i][j];
+        bool ans = 0;
+        if(p[j]=='?'||s[i]==p[j])return dp[i][j]=sub(s,p,i-1,j-1);
+        if(p[j]=='*')return dp[i][j]=sub(s,p,i,j-1) or sub(s,p,i-1,j);
+        return dp[i][j]=0;
+    }
+public:
+    bool isMatch(string s, string p) {
+        memset(dp,-1,sizeof(dp));
+        int n = s.size();
+        int m = p.size();
+        bool flag = 1;
+        for(int i=0;i<m;i++){
+            if(p[i]!='*')flag=0;
+            if(!flag)x.push_back('#');
+            else x.push_back('*');
+        }
+        return sub(s,p,n-1,m-1);
+    }
+};
