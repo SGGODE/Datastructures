@@ -1,0 +1,13 @@
+class Solution {
+private:
+    int sub(TreeNode* root,long long int pre,int target){
+       if(root==NULL)return 0;
+       long long int current = pre+root->val;
+       return (current==target)+sub(root->left,current,target)+sub(root->right,current,target);
+    }
+public:
+    int pathSum(TreeNode* root, int targetSum) {
+        if(root==NULL)return 0;
+        return sub(root,0,targetSum)+pathSum(root->left,targetSum)+pathSum(root->right,targetSum);
+    }
+};
